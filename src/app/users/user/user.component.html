@@ -1,1 +1,28 @@
-<p>user works!</p>
+<div *ngIf="loading" class="alert alert-info text-center mt-3" role="alert">
+    <h4 class="alert-heading">Loading...</h4>
+    <p>
+        <i class="fa fa-sync fa-spin fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="error" class="alert alert-danger text-center mt-3" role="alert">
+    <h4 class="alert-heading">Error</h4>
+    <pre>
+        There was an error loading the users.
+        {{ error.name }}
+        {{ error.message }}
+    </pre>
+</div>
+
+<div *ngIf="!loading" class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+    <div class="col">
+        <div class="card mb-2">
+            <img [src]="user?.avatar" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Nombre: {{ user?.first_name }} {{ user?.last_name }}</h5>
+                <p class="card-text">Email: {{ user?.email }}</p>
+                <span class="text-muted">ID:{{ user?.id }}</span>
+            </div>
+        </div>
+    </div>
+</div>
